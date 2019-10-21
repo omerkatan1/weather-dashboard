@@ -4,20 +4,66 @@
 <head>
     <title>Weather Dashboard</title>
 
+    <!-- linking css sheet -->
+    <link rel="stylesheet" href="Assets/style.css">
+
     <!-- jquery link -->
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
     <!-- bootstrap link -->
-    <link href="">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 
 </head>
+
+<!-- header -->
+<header class="container-fluid">
+
+    <div class="row">
+
+        <div id="header-box" class="col-12">
+
+            <h1 id="header-title">Weather Dashboard</h1>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<input type="text" id="cityNameSearch" placeholder="Ex: London, UK">
+<button id="cityNameSubmit">Submit</button>
 
 
 
 
 
 <script>
-    
+
+
+
+    // EVERYTHING TO DO WITH THE WEATHER API
+
+    $("#cityNameSubmit").click(function () {
+
+
+        var key = "f2c5c8025ab4a4cc77dc112a270a04b9";
+        var city = $("#cityNameSearch").val();
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + ",WA&appid=" + key;
+
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            console.log(response);
+        });
+
+    });
+
 </script>
+
 </html>
