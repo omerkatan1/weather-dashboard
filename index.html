@@ -22,44 +22,48 @@
 </head>
 
 <!-- header -->
-<header class="container-fluid">
-
-    <div class="row">
-
-        <div id="header-box" class="col-12">
-
-            <h1 id="header-title">Weather Dashboard</h1>
-
-        </div>
-
-    </div>
+<header>
+    <h1 id="header-title">Weather Dashboard</h1>
 
 </header>
 
 
+<div id="pagecontent" class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-2">
+
+            <div class="row" id="searchBox">
+
+                <input class="col-9" type="text" id="cityNameSearch" placeholder="Ex: London, UK">
+
+                <button class="col-3" id="cityNameSubmit">Submit</button>
+
+            </div>
+
+        </div>
 
 
+        <div class="col-10">
 
+            <div id="currentWeatherBox">
 
+                <image id="iconHolder"></image>
+                <h4 id="date">
+                    </h1>
+                    <h1 id="city"></h1>
+                    <h1 id="temp"></h1>
+                    <h4 id="humidity"></h4>
+                    <h4 id="windspeed">
+                        </h1>
+                        <h1 id="UVindex"></h1>
 
+            </div>
 
-<div id="currentWeatherBox">
+        </div>
+    </div>
 
-    <image id="iconHolder"></image>
-    <h4 id="date"></h1>
-    <h1 id="city"></h1>
-    <h1 id="temp"></h1>
-    <h1 id="humidity"></h1>
-    <h4 id="windspeed"></h1>
-    <h1 id="UVindex"></h1>
-
-</div>
-
-
-
-<div id="searchBox">
-    <input type="text" id="cityNameSearch" placeholder="Ex: London, UK">
-    <button id="cityNameSubmit">Submit</button>
 </div>
 
 
@@ -74,6 +78,9 @@
 
 
     // current weather
+
+
+    // current location
 
     var key = "f2c5c8025ab4a4cc77dc112a270a04b9";
 
@@ -104,6 +111,11 @@
             var getTemp = parseInt(response.main.temp);
             $("#temp").empty();
             $("#temp").append(getTemp + " °F");
+
+            // humidity stuff
+            var getHumidity = response.main.humidity;
+            $("#humidity").empty();
+            $("#humidity").append("Humidity: " + getHumidity + " %");
 
             //wind speed stuff
             var getSpeed = response.wind.speed;

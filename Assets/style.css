@@ -1,11 +1,30 @@
+html, body, .container-fluid, .row {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.col-9, .col-2 {
+    margin: 0;
+}
 
+#pagecontent {
+}
 
 #searchBox {
-    position: absolute;
+    width: 300px;
     background-color: whitesmoke;
-    left: 0px;
+    left: 0px; 
     height: 100%;
-    padding: 10px;
+}
+#cityNameSearch {
+    margin: 0px;
+    height: 50px;
+    width: 100%;
+}
+#cityNameSubmit {
+    margin: 0px;
+    height: 50px;
+    width: 100%;
 }
 #currentWeatherBox {
     background-color: whitesmoke;
@@ -13,17 +32,21 @@
     margin-top: 50px;
     margin-right: 50px;
     padding: 35px;
-    width: 800px;
+    width: 1000px;;
     border-radius: 35px;
     -moz-box-shadow: 0 0 10px #6d6d6d;
     -webkit-box-shadow: 0 0 10px #6d6d6d;
     box-shadow: 0 0 10px #6d6d6d;
 }
+#humidity,
+#windspeed {
+    color: rgb(170, 170, 170);
+}
 
-
-#header-box {
+header {
     background-color: lightblue;
     text-align: center;
+    width: 100%;
     height: 100px;
 }
 #header-title {
