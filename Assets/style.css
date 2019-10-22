@@ -45,6 +45,9 @@ html, body, .container-fluid, .row {
 #windspeed {
     color: rgb(170, 170, 170);
 }
+#UVindex {
+    color: rgb(170, 170, 170); 
+}
 
 header {
     background-color: lightblue;
@@ -67,4 +70,12 @@ header {
 }
 #city {
     margin-bottom: 125px;
+}
+
+#newBtnSearch {
+    position: absolute;
+    top: 0;
+}
+.cityBtns {
+    width: 100%;
 }

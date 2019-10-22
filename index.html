@@ -40,6 +40,13 @@
 
                 <button class="col-3" id="cityNameSubmit">Submit</button>
 
+
+
+                
+                <div id="newBtnSearch" class="col-12">
+
+                </div>
+
             </div>
 
         </div>
@@ -84,6 +91,9 @@
 
     $("#cityNameSubmit").click(function () {
 
+
+
+
         var city = $("#cityNameSearch").val();
         currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + key;
 
@@ -93,6 +103,18 @@
             method: "GET"
         }).then(function (response) {
             console.log(response);
+
+
+            // saving search stuff
+            localStorage.setItem(response.name, response.name);
+
+            var newBtn = $("<button>");
+            newBtn.append(localStorage.getItem(response.name));
+            newBtn.addClass("cityBtns");
+            $("#searchBox").append(newBtn);
+
+
+
 
 
             // city name stuff
@@ -127,6 +149,24 @@
 
 
 
+            var lat = response.coord.lat;
+            var lon = response.coord.lon;
+
+            var uvQueryURL = "http://api.openweathermap.org/data/2.5/uvi/forecast?appid=" + key + "&lat=" + lat + "&lon=" + lon;
+
+
+            $.ajax({
+                url: uvQueryURL,
+                method: "GET"
+            }).then(function (uvResponse) {
+
+                var getUvIndex = uvResponse[0].value;
+
+                $("#UVindex").empty();
+                $("#UVindex").prepend("UV index: " + getUvIndex);
+
+
+            });
 
         });
 
