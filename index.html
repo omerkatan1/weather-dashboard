@@ -45,19 +45,17 @@
         </div>
 
 
-        <div class="col-10">
+        <div id="weatherRow" class="col-10">
 
             <div id="currentWeatherBox">
 
                 <image id="iconHolder"></image>
-                <h4 id="date">
-                    </h1>
-                    <h1 id="city"></h1>
-                    <h1 id="temp"></h1>
-                    <h4 id="humidity"></h4>
-                    <h4 id="windspeed">
-                        </h1>
-                        <h1 id="UVindex"></h1>
+                <h4 id="date"></h4>
+                <h1 id="city"></h1>
+                <h1 id="temp"></h1>
+                <h5 id="humidity"></h5>
+                <h5 id="windspeed"></h5>
+                <h5 id="UVindex"></h5>
 
             </div>
 
@@ -116,6 +114,7 @@
             var getHumidity = response.main.humidity;
             $("#humidity").empty();
             $("#humidity").append("Humidity: " + getHumidity + " %");
+
 
             //wind speed stuff
             var getSpeed = response.wind.speed;
