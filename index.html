@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <!-- linking moments.js -->
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+
 
 </head>
 
@@ -35,8 +38,29 @@
 
 
 
-<input type="text" id="cityNameSearch" placeholder="Ex: London, UK">
-<button id="cityNameSubmit">Submit</button>
+
+
+
+
+
+<div id="currentWeatherBox">
+
+    <image id="iconHolder"></image>
+    <h4 id="date"></h1>
+    <h1 id="city"></h1>
+    <h1 id="temp"></h1>
+    <h1 id="humidity"></h1>
+    <h4 id="windspeed"></h1>
+    <h1 id="UVindex"></h1>
+
+</div>
+
+
+
+<div id="searchBox">
+    <input type="text" id="cityNameSearch" placeholder="Ex: London, UK">
+    <button id="cityNameSubmit">Submit</button>
+</div>
 
 
 
@@ -48,18 +72,51 @@
 
     // EVERYTHING TO DO WITH THE WEATHER API
 
+
+    // current weather
+
+    var key = "f2c5c8025ab4a4cc77dc112a270a04b9";
+
     $("#cityNameSubmit").click(function () {
 
-
-        var key = "f2c5c8025ab4a4cc77dc112a270a04b9";
         var city = $("#cityNameSearch").val();
-        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + ",WA&appid=" + key;
+        currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + key;
+
 
         $.ajax({
-            url: queryURL,
+            url: currentWeatherURL,
             method: "GET"
         }).then(function (response) {
             console.log(response);
+
+
+            // city name stuff
+            var getCity = response.name;
+            $("#city").empty();
+            $("#city").append(getCity);
+
+            // data and time stuff
+            var getDate = moment().format('ll');
+            $("#date").empty();
+            $("#date").append(getDate);
+
+            // temp stuff
+            var getTemp = parseInt(response.main.temp);
+            $("#temp").empty();
+            $("#temp").append(getTemp + " °F");
+
+            //wind speed stuff
+            var getSpeed = response.wind.speed;
+            $("#windspeed").empty();
+            $("#windspeed").append("Windspeed: " + getSpeed + " mph");
+
+            // icon stuff
+            var getIconURL = "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png";
+            $("#iconHolder").attr("src", getIconURL);
+
+
+
+
         });
 
     });

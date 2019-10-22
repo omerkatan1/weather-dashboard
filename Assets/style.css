@@ -1,12 +1,44 @@
 
 
+#searchBox {
+    position: absolute;
+    background-color: whitesmoke;
+    left: 0px;
+    height: 100%;
+    padding: 10px;
+}
+#currentWeatherBox {
+    background-color: whitesmoke;
+    float: right;
+    margin-top: 50px;
+    margin-right: 50px;
+    padding: 35px;
+    width: 800px;
+    border-radius: 35px;
+    -moz-box-shadow: 0 0 10px #6d6d6d;
+    -webkit-box-shadow: 0 0 10px #6d6d6d;
+    box-shadow: 0 0 10px #6d6d6d;
+}
 
 
 #header-box {
-    background-color: rgb(82, 82, 82);
+    background-color: lightblue;
     text-align: center;
     height: 100px;
 }
 #header-title {
-    color: whitesmoke;
+    color: white;
+}
+
+#iconHolder {
+    float: right;
+    background-color: rgb(184, 184, 184);
+    border-radius: 40px;
+    margin-left: 15px;
+}
+#date {
+    float: right;
+}
+#city {
+    margin-bottom: 125px;
 }

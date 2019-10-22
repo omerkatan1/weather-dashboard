@@ -1,0 +1,25 @@
+    // current location
+    var locationOptions = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+    };
+    function success(pos) {
+        var crd = pos.coords;
+
+        var currLocation = ("lat=" + parseInt(crd.latitude) + "&lon=" + parseInt(crd.longitude));
+        console.log(currLocation);
+
+    }
+    function error(err) {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+    navigator.geolocation.getCurrentPosition(success, error, locationOptions)
+
+
+
+    var key = "f2c5c8025ab4a4cc77dc112a270a04b9";
+
+    if ($("#cityNameSearth").val("")) {
+        var currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?" + navigator.geolocation.getCurrentPosition(success, error, locationOptions) + key;
+    }
