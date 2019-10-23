@@ -36,9 +36,7 @@
         <button class="col-4" id="cityNameSubmit">Submit</button>
     </div>
 
-
-
-    <div id="newBtnSearch"></div>
+    <div class="container" id="newBtnSearch"></div>
 </div>
 
 
@@ -77,19 +75,23 @@
 <script>
 
 
-
     // EVERYTHING TO DO WITH THE WEATHER API
-
-
     // current weather
-
-
-    // current location
-
-
-
-
     var key = "f2c5c8025ab4a4cc77dc112a270a04b9";
+
+
+    var savedCitys = ["seattle"];
+
+    var savedCityParse = JSON.parse(localStorage.getItem("city"));
+    console.log(savedCityParse);
+
+    for(var i=0; i < savedCityParse.length; i++) {
+        savedCitys.push(savedCityParse[i]);
+        
+        var newBtn = $("<button>");
+        newBtn.append(savedCitys[i]);
+        $("#newBtnSearch").append(newBtn);
+    }
 
     $("#cityNameSubmit").click(function () {
 
@@ -108,24 +110,8 @@
 
 
 
-            // // localStorage.setItem("savedBtns", savedBtns[i]);
-            // // savedBtns.push(localStorage.getItem(response.name));
-            // var savedBtns = [];
-            // console.log(savedBtns);
-
-            // for (var i = 0; i < localStorage.getItem(savedBtns.length); i++) {
-            //     var newBtn = $("<button>");
-            //     newBtn.append(localStorage.getItem(savedBtns[i]));
-            //     newBtn.addClass("cityBtns");
-            //     $("#searchBox").append(newBtn);
-            // }
-
-            // localStorage.setItem("savedBtns", savedBtns.join("|"));
-            // getItem("savedBtns").split("|");
-            // savedBtns.push(localStorage.getItem(savedBtns[i]));
-
-
-
+            savedCitys.push(response.name);
+            localStorage.setItem("city", JSON.stringify(savedCitys));
 
 
             // city name stuff
