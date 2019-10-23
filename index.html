@@ -28,45 +28,44 @@
 </header>
 
 
+<!-- search navbar -->
+<div id="searchBox">
+
+    <div id="searchBar" class="container">
+        <input class="col-8" type="text" id="cityNameSearch" placeholder="Ex: London, UK">
+        <button class="col-4" id="cityNameSubmit">Submit</button>
+    </div>
+
+
+
+    <div id="newBtnSearch"></div>
+</div>
+
+
 <div id="pagecontent" class="container-fluid">
 
     <div class="row">
 
-        <div class="col-2">
-
-            <div class="row" id="searchBox">
-
-                <input class="col-9" type="text" id="cityNameSearch" placeholder="Ex: London, UK">
-
-                <button class="col-3" id="cityNameSubmit">Submit</button>
+        <!-- empty col -->
+        <div class="col-2"></div>
 
 
+        <div id="currentWeatherBox" class="col-8">
 
-                
-                <div id="newBtnSearch" class="col-12">
-
-                </div>
-
-            </div>
+            <image id="iconHolder"></image>
+            <h4 id="date"></h4>
+            <h1 id="city"></h1>
+            <h1 id="temp"></h1>
+            <h5 id="humidity"></h5>
+            <h5 id="windspeed"></h5>
+            <h5 id="UVindex"></h5>
 
         </div>
 
+        <!-- empty col -->
+        <div class="col-2"></div>
 
-        <div id="weatherRow" class="col-10">
 
-            <div id="currentWeatherBox">
-
-                <image id="iconHolder"></image>
-                <h4 id="date"></h4>
-                <h1 id="city"></h1>
-                <h1 id="temp"></h1>
-                <h5 id="humidity"></h5>
-                <h5 id="windspeed"></h5>
-                <h5 id="UVindex"></h5>
-
-            </div>
-
-        </div>
     </div>
 
 </div>
