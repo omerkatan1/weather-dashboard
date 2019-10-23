@@ -86,6 +86,9 @@
 
     // current location
 
+
+
+
     var key = "f2c5c8025ab4a4cc77dc112a270a04b9";
 
     $("#cityNameSubmit").click(function () {
@@ -104,13 +107,22 @@
             console.log(response);
 
 
-            // saving search stuff
-            localStorage.setItem(response.name, response.name);
 
-            var newBtn = $("<button>");
-            newBtn.append(localStorage.getItem(response.name));
-            newBtn.addClass("cityBtns");
-            $("#searchBox").append(newBtn);
+            // // localStorage.setItem("savedBtns", savedBtns[i]);
+            // // savedBtns.push(localStorage.getItem(response.name));
+            // var savedBtns = [];
+            // console.log(savedBtns);
+
+            // for (var i = 0; i < localStorage.getItem(savedBtns.length); i++) {
+            //     var newBtn = $("<button>");
+            //     newBtn.append(localStorage.getItem(savedBtns[i]));
+            //     newBtn.addClass("cityBtns");
+            //     $("#searchBox").append(newBtn);
+            // }
+
+            // localStorage.setItem("savedBtns", savedBtns.join("|"));
+            // getItem("savedBtns").split("|");
+            // savedBtns.push(localStorage.getItem(savedBtns[i]));
 
 
 
