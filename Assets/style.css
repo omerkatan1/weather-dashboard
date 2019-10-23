@@ -31,6 +31,10 @@ html, body, .container-fluid, .row {
     margin: 0px;
     height: 50px;
 }
+.savedBtnStyle {
+    width: 100%;
+    height: 50px;
+}
 #weatherRow {
     text-align: center;
 }
@@ -77,11 +81,6 @@ header {
 }
 #city {
     margin-bottom: 125px;
-}
-
-#newBtnSearch {
-    position: absolute;
-    top: 0;
 }
 .cityBtns {
     width: 100%;

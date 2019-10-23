@@ -31,12 +31,12 @@
 <!-- search navbar -->
 <div id="searchBox">
 
-    <div id="searchBar" class="container">
+    <div id="searchBar">
         <input class="col-8" type="text" id="cityNameSearch" placeholder="Ex: London, UK">
         <button class="col-4" id="cityNameSubmit">Submit</button>
     </div>
 
-    <div class="container" id="newBtnSearch"></div>
+    <div id="newBtnSearch"></div>
 </div>
 
 
@@ -76,27 +76,36 @@
 
 
     // EVERYTHING TO DO WITH THE WEATHER API
-    // current weather
     var key = "f2c5c8025ab4a4cc77dc112a270a04b9";
 
 
-    var savedCitys = ["seattle"];
 
+    // this is the saved button for local storage
+    var savedCitys = [];
     var savedCityParse = JSON.parse(localStorage.getItem("city"));
     console.log(savedCityParse);
+    console.log(savedCitys);
 
-    for(var i=0; i < savedCityParse.length; i++) {
-        savedCitys.push(savedCityParse[i]);
-        
-        var newBtn = $("<button>");
-        newBtn.append(savedCitys[i]);
-        $("#newBtnSearch").append(newBtn);
+    if (savedCityParse != null) {
+        for (var i = 0; i < savedCityParse.length; i++) {
+            savedCitys.push(savedCityParse[i]);
+
+            var newBtn = $("<button>");
+            newBtn.addClass("savedBtnStyle");
+            newBtn.append(savedCitys[i]);
+            newBtn.attr("data-name", savedCityParse[i]);
+            $("#newBtnSearch").append(newBtn);
+        }
+    }
+    else {
+        console.log("savedCityParse is empty");
     }
 
+
+
+
+
     $("#cityNameSubmit").click(function () {
-
-
-
 
         var city = $("#cityNameSearch").val();
         currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + key;
@@ -109,9 +118,15 @@
             console.log(response);
 
 
-
             savedCitys.push(response.name);
+            var newBtn = $("<button>");
+            newBtn.addClass("savedBtnStyle");
+            newBtn.append(response.name);
+            $("#newBtnSearch").append(newBtn);
             localStorage.setItem("city", JSON.stringify(savedCitys));
+
+
+
 
 
             // city name stuff
