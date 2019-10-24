@@ -59,6 +59,10 @@
             <h5 id="humidity"></h5>
             <h5 id="windspeed"></h5>
             <h5 id="UVindex"></h5>
+            
+            <div class="row">
+                <div id="fiveDayBox" class="col-12"></div>
+            </div>
 
         </div>
 
@@ -66,21 +70,6 @@
         <div class="col-2"></div>
 
 
-    </div>
-
-    <div class="row">
-        <!-- empty col -->
-        <div class="col-2"></div>
-
-
-        <div id="" class="col-8">
-
-
-
-        </div>
-
-        <!-- empty col -->
-        <div class="col-2"></div>
     </div>
 
 </div>
@@ -101,38 +90,26 @@
 
     $(".searchBtn").click(function () {
         var city = $("#cityNameSearch").val();
-        console.log(savedBtns);
-        console.log(localSavedBtns);
 
         currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + key;
+
         $.ajax({
             url: currentWeatherURL,
             method: "GET"
         }).then(function (response) {
+            console.log(response);
 
             savedBtns.push(response.name);
             localStorage.setItem("savedCitys", JSON.stringify(savedBtns));
 
             // all the current weather info function
             currentWeatherInfo(response);
+
         });
     });
 
 
     appendBtns(savedBtns, localSavedBtns);
-
-
-    // test code....
-
-    // console.log(savedCity);
-    // currentWeatherURLSaved = "https://api.openweathermap.org/data/2.5/weather?q=" + savedCity + "&units=imperial&appid=" + key;
-
-    // $.ajax({
-    //     url: currentWeatherURLSaved,
-    //     method: "GET"
-    // }).then(function (response) {
-    //     currentWeatherInfo(response);
-    // });
 
 </script>
 

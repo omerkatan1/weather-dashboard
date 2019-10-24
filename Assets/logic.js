@@ -51,6 +51,46 @@ function currentWeatherInfo(response) {
 
 
     });
+
+
+    var fiveDayQueryURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + key;
+
+    $.ajax({
+        url: fiveDayQueryURL,
+        method: "GET"
+    }).then(function (fiveDayResponse) {
+        console.log(fiveDayResponse);
+
+
+
+        for(var i = 0; i < 5; i++) {
+
+            var namePar = $("<p>");
+            namePar.append(response.name);
+
+            var getTempX5 = fiveDayResponse.list[i].main.temp;
+            console.log(getTempX5);
+            var tempPar = $("<p>");
+            tempPar.append("Temp: " + getTempX5);
+
+
+            var newDiv = $("<div>");
+            newDiv.addClass("fiveDayBoxStyle");
+            newDiv.append(namePar);
+            newDiv.append(tempPar);
+
+
+
+            $("#fiveDayBox").append(newDiv);
+
+
+
+            
+
+        }
+    });
+
+
 }
 
 
@@ -63,6 +103,8 @@ function appendBtns(savedBtns, localSavedBtns) {
         for (var i = 0; i < localSavedBtns.length; i++) {
             savedBtns.push(localSavedBtns[i]);
         }
+
+
         console.log(savedBtns);
         for (var i = 0; i < savedBtns.length; i++) {
             var newBtn = $("<button>");
