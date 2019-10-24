@@ -33,10 +33,11 @@
 <div id="searchBox">
 
     <div id="searchBar">
-        <input class="col-8" type="text" id="cityNameSearch" placeholder="Ex: London, UK">
+        <input class="col-8" type="text" id="cityNameSearch">
         <button class="col-4 searchBtn" id="cityNameSubmit">Submit</button>
     </div>
 
+    <!-- where local storage buttons will be appended -->
     <div id="newBtnSearch"></div>
 </div>
 
@@ -52,8 +53,8 @@
         <div id="currentWeatherBox" class="col-8">
 
             <image id="iconHolder"></image>
-            <h4 id="date"></h4>
             <h1 id="city"></h1>
+            <h4 id="date"></h4>
             <h1 id="temp"></h1>
             <h5 id="humidity"></h5>
             <h5 id="windspeed"></h5>
@@ -65,6 +66,21 @@
         <div class="col-2"></div>
 
 
+    </div>
+
+    <div class="row">
+        <!-- empty col -->
+        <div class="col-2"></div>
+
+
+        <div id="" class="col-8">
+
+
+
+        </div>
+
+        <!-- empty col -->
+        <div class="col-2"></div>
     </div>
 
 </div>
@@ -79,21 +95,14 @@
     // EVERYTHING TO DO WITH THE WEATHER API
     var key = "f2c5c8025ab4a4cc77dc112a270a04b9";
 
-
-
-    // this is the saved button for local storage
-    var savedCitys = [];
-    var savedCityParse = JSON.parse(localStorage.getItem("city"));
-
-
-    getSavedButtons(savedCitys, savedCityParse);
+    var savedBtns = [];
+    var localSavedBtns = JSON.parse(localStorage.getItem("savedCitys"));
 
 
     $(".searchBtn").click(function () {
-
-        var city = $(".searchBtn").val();
-        savedBtnOnClick(city);
-        console.log(city);
+        var city = $("#cityNameSearch").val();
+        console.log(savedBtns);
+        console.log(localSavedBtns);
 
         currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + key;
 
@@ -102,21 +111,16 @@
             url: currentWeatherURL,
             method: "GET"
         }).then(function (response) {
-            
-            console.log(response);
 
-
-            savedCitys.push(response.name);
-            localStorage.setItem("city", JSON.stringify(savedCitys));
-            updateSavedButtons(savedCitys);
-
-
+            savedBtns.push(response.name);
+            localStorage.setItem("savedCitys", JSON.stringify(savedBtns));
 
             currentWeatherInfo(response);
-
         });
-
     });
+
+
+    appendBtns(savedBtns, localSavedBtns);
 
 </script>
 

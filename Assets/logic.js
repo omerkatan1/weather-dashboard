@@ -14,7 +14,7 @@ function currentWeatherInfo(response) {
     // temp stuff
     var getTemp = parseInt(response.main.temp);
     $("#temp").empty();
-    $("#temp").append(getTemp + " °F");
+    $("#temp").append(getTemp + " F");
 
     // humidity stuff
     var getHumidity = response.main.humidity;
@@ -53,51 +53,35 @@ function currentWeatherInfo(response) {
     });
 }
 
-var city = $("#cityNameSubmit").val();
 
 
-// this function makes buttons appear after page is refreshed
-function getSavedButtons(savedCitys, savedCityParse) {
-    $("#newBtnSearch").empty();
-    if (savedCityParse != null) {
-        for (var i = 0; i < savedCityParse.length; i++) {
-            savedCitys.push(savedCityParse[i]);
+
+function appendBtns(savedBtns, localSavedBtns) {
+    if (localSavedBtns != null) {
+
+
+        for (var i = 0; i < localSavedBtns.length; i++) {
+            savedBtns.push(localSavedBtns[i]);
+        }
+        console.log(savedBtns);
+        for (var i = 0; i < savedBtns.length; i++) {
             var newBtn = $("<button>");
-            newBtn.attr("data-name", savedCitys[i]);
+            newBtn.attr("data-name", savedBtns[i])
+            newBtn.append(savedBtns[i]);
             newBtn.addClass("savedBtnStyle");
-            newBtn.addClass("searchBtn");
-            newBtn.append(savedCitys[i]);
             $("#newBtnSearch").append(newBtn);
 
-            savedBtnOnClick();
+            savedBtnClicked(newBtn);
         }
     }
     else {
-        console.log("savedCityParse is empty");
-    }
-    console.log(savedCitys);
-}
-
-// this function makes sure the button appears without having to refresh the page
-function updateSavedButtons(savedCitys) {
-    $("#newBtnSearch").empty();
-    for(var i = 0; i < savedCitys.length; i++) {
-        var newBtnUpdate = $("<button>");
-        newBtnUpdate.attr("data-name", savedCitys[i]);
-        newBtnUpdate.addClass("savedBtnStyle");
-        newBtnUpdate.addClass("searchBtn");
-        newBtnUpdate.append(savedCitys[i]);
-        $("#newBtnSearch").append(newBtnUpdate)
-
-        savedBtnOnClick();
+        console.log("savedBtns is empty");
     }
 }
 
-
-function savedBtnOnClick() {
-
-    $(".searchBtn").click(function() {
-        var getBtnText = $(this).attr("data-name");
-        city = getBtnText;
-    });
+function savedBtnClicked(newBtn) {
+    $(newBtn).click(function () {
+        var getSavedBtnVal = $(this).attr("data-name");
+        console.log(getSavedBtnVal)
+    })
 }
