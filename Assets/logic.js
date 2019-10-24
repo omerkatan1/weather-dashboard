@@ -65,10 +65,7 @@ function currentWeatherInfo(response) {
 
         for(var i = 0; i < 5; i++) {
 
-
-
             var getTempX5 = fiveDayResponse.list[i].main.temp;
-            console.log(getTempX5);
             var tempPar = $("<p>");
             tempPar.css("font-size", "25px");
             tempPar.css("color", "black");

@@ -59,7 +59,7 @@
             <h5 id="humidity"></h5>
             <h5 id="windspeed"></h5>
             <h5 id="UVindex"></h5>
-            
+
             <div class="row">
                 <div id="fiveDayBox" class="col-12"></div>
             </div>
@@ -88,6 +88,7 @@
     var localSavedBtns = JSON.parse(localStorage.getItem("savedCitys"));
 
 
+
     $(".searchBtn").click(function () {
         var city = $("#cityNameSearch").val();
 
@@ -99,7 +100,20 @@
         }).then(function (response) {
             console.log(response);
 
-            savedBtns.push(response.name);
+
+            // this makes it so the user cant get the same saved button twice
+            var inLocalArray = localSavedBtns.includes(response.name);
+            var inArray = savedBtns.includes(response.name);
+
+            if(inLocalArray) {
+                console.log("already in local array");
+            }
+            else if(inArray) {
+                console.log("already in array");
+            }
+            else {
+                savedBtns.push(response.name);
+            }
             localStorage.setItem("savedCitys", JSON.stringify(savedBtns));
 
             // all the current weather info function
