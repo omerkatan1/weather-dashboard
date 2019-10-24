@@ -65,20 +65,25 @@ function currentWeatherInfo(response) {
 
         for(var i = 0; i < 5; i++) {
 
-            var namePar = $("<p>");
-            namePar.append(response.name);
+
 
             var getTempX5 = fiveDayResponse.list[i].main.temp;
             console.log(getTempX5);
             var tempPar = $("<p>");
-            tempPar.append("Temp: " + getTempX5);
+            tempPar.css("font-size", "25px");
+            tempPar.css("color", "black");
+            tempPar.css("font-weight", "bolder");
+            tempPar.append(getTempX5 + " F");
+
+            var getHumidityX5 = fiveDayResponse.list[i].main.humidity;
+            var humidityPar = $("<p>");
+            humidityPar.append("Humidity: " + getHumidityX5 + "%");
 
 
             var newDiv = $("<div>");
             newDiv.addClass("fiveDayBoxStyle");
-            newDiv.append(namePar);
             newDiv.append(tempPar);
-
+            newDiv.append(humidityPar);
 
 
             $("#fiveDayBox").append(newDiv);
