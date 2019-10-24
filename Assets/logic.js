@@ -82,6 +82,6 @@ function appendBtns(savedBtns, localSavedBtns) {
 function savedBtnClicked(newBtn) {
     $(newBtn).click(function () {
         var getSavedBtnVal = $(this).attr("data-name");
-        console.log(getSavedBtnVal)
+        console.log(getSavedBtnVal);
     })
 }

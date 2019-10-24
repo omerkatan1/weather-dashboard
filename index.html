@@ -105,8 +105,6 @@
         console.log(localSavedBtns);
 
         currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + key;
-
-
         $.ajax({
             url: currentWeatherURL,
             method: "GET"
@@ -115,12 +113,26 @@
             savedBtns.push(response.name);
             localStorage.setItem("savedCitys", JSON.stringify(savedBtns));
 
+            // all the current weather info function
             currentWeatherInfo(response);
         });
     });
 
 
     appendBtns(savedBtns, localSavedBtns);
+
+
+    // test code....
+
+    // console.log(savedCity);
+    // currentWeatherURLSaved = "https://api.openweathermap.org/data/2.5/weather?q=" + savedCity + "&units=imperial&appid=" + key;
+
+    // $.ajax({
+    //     url: currentWeatherURLSaved,
+    //     method: "GET"
+    // }).then(function (response) {
+    //     currentWeatherInfo(response);
+    // });
 
 </script>
 
