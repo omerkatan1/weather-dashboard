@@ -122,6 +122,9 @@ function currentWeatherInfo(response) {
             datePar.css("font-size", "20px");
             datePar.append(fiveDates);
 
+            var fiveIconURL = "http://openweathermap.org/img/wn/" + fiveDayResponse.list[i].weather[0].icon + ".png";
+            var iconImg = $("<image>");
+            iconImg.attr("src", fiveIconURL);
 
 
 
@@ -139,6 +142,7 @@ function currentWeatherInfo(response) {
             var newDiv = $("<div>");
             newDiv.addClass("fiveDayBoxStyle");
             newDiv.append(datePar);
+            newDiv.append(iconImg);
             newDiv.append(tempPar);
             newDiv.append(humidityPar);
 
