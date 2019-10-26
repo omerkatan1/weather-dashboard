@@ -61,9 +61,7 @@
             <h5 id="UVindex"></h5>
 
             <div class="row">
-                <div id="fiveDayBox" class="col-12">
-                    <h3 id="fiveDayForcastTitle">Five Day Forcast</h3>
-                </div>
+                <div id="fiveDayBox" class="col-12"></div>
             </div>
 
         </div>
@@ -86,24 +84,23 @@
     // EVERYTHING TO DO WITH THE WEATHER API
     var key = "f2c5c8025ab4a4cc77dc112a270a04b9";
 
-
     var savedBtns = [];
-
-    // var localSavedBtns = JSON.parse(localStorage.getItem("savedCitys"));
-
+    var localSavedBtns = JSON.parse(localStorage.getItem("savedCitys"));
+    console.log(localSavedBtns);
 
 
     $(".searchBtn").click(function () {
+
         var city = $("#cityNameSearch").val();
+        savedBtnClicked(city);
 
         currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + key;
 
 
-        generateAllWeather(currentWeatherURL);
+        generateAllWeather(currentWeatherURL, savedBtns, localSavedBtns);
+        updateBtn();
     });
-
-
-    // appendBtns(savedBtns, localSavedBtns);
+    appendBtns(savedBtns, localSavedBtns);
 
 </script>
 
