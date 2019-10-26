@@ -34,7 +34,7 @@
 
     <div id="searchBar">
         <input class="col-8" type="text" id="cityNameSearch">
-        <button class="col-4 searchBtn" id="cityNameSubmit">Submit</button>
+        <button class="col-4 searchBtn" id="cityNameSubmit">🔍</button>
     </div>
 
     <!-- where local storage buttons will be appended -->
@@ -61,7 +61,9 @@
             <h5 id="UVindex"></h5>
 
             <div class="row">
-                <div id="fiveDayBox" class="col-12"></div>
+                <div id="fiveDayBox" class="col-12">
+                    <h3 id="fiveDayForcastTitle">Five Day Forcast</h3>
+                </div>
             </div>
 
         </div>
@@ -84,8 +86,10 @@
     // EVERYTHING TO DO WITH THE WEATHER API
     var key = "f2c5c8025ab4a4cc77dc112a270a04b9";
 
-    var savedBtns = ["seattle"];
-    var localSavedBtns = JSON.parse(localStorage.getItem("savedCitys"));
+
+    var savedBtns = [];
+
+    // var localSavedBtns = JSON.parse(localStorage.getItem("savedCitys"));
 
 
 
@@ -99,7 +103,7 @@
     });
 
 
-    appendBtns(savedBtns, localSavedBtns);
+    // appendBtns(savedBtns, localSavedBtns);
 
 </script>
 

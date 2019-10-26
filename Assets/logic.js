@@ -7,41 +7,41 @@ function generateAllWeather(currentWeatherURL, localSavedBtns, savedBtns) {
         console.log(response);
 
 
-        // this makes it so the user cant get the same saved button twice
-        var inLocalArray;
-        var inArray;
+        // // this makes it so the user cant get the same saved button twice
+        // var inLocalArray;
+        // var inArray;
 
-        // checks if arrays are empty then if true then automatically set falue to false so the code can run
-        if(localSavedBtns != null) {
-            inLocalArray = localSavedBtns.includes(response.name);
-        }
-        else  {
-            inLocalArray = false;
-        }
+        // // checks if arrays are empty then if true then automatically set falue to false so the code can run
+        // if(localSavedBtns != null) {
+        //     inLocalArray = localSavedBtns.includes(response.name);
+        // }
+        // else  {
+        //     inLocalArray = false;
+        // }
 
-        if(savedBtns != null) {
-            inArray = savedBtns.includes(response.name);
-        }
-        else {
-            inArray = false;
-        }
+        // if(savedBtns != null) {
+        //     inArray = savedBtns.includes(response.name);
+        // }
+        // else {
+        //     inArray = false;
+        // }
 
         
 
-        if(inLocalArray) {
-            console.log("already in local array");
-        }
-        else if(inArray) {
-            console.log("already in array");
-        }
-        else {
-            if(savedBtns != null) {
-            savedBtns.push(response.name);
-            } else {
-                console.log("saved buttons is empty");
-            }
-        }
-        localStorage.setItem("savedCitys", JSON.stringify(savedBtns));
+        // if(inLocalArray) {
+        //     console.log("already in local array");
+        // }
+        // else if(inArray) {
+        //     console.log("already in array");
+        // }
+        // else {
+        //     if(savedBtns != null) {
+        //         savedBtns.push(response.name);
+        //         localStorage.setItem("savedCitys", JSON.stringify(savedBtns));
+        //     } else {
+        //         console.log("saved buttons is empty");
+        //     }
+        // }
 
         // all the current weather info function
         currentWeatherInfo(response);
@@ -67,7 +67,7 @@ function currentWeatherInfo(response) {
     // temp stuff
     var getTemp = parseInt(response.main.temp);
     $("#temp").empty();
-    $("#temp").append(getTemp + " F");
+    $("#temp").append(getTemp + " °F");
 
     // humidity stuff
     var getHumidity = response.main.humidity;
@@ -115,14 +115,20 @@ function currentWeatherInfo(response) {
         console.log(fiveDayResponse);
 
 
-
         for(var i = 0; i < 5; i++) {
+            var fiveDates = moment().add(1+i, 'day').format('L');
+            var datePar = $("<p>");
+            datePar.css("font-weight", "bolder");
+            datePar.css("font-size", "20px");
+            datePar.append(fiveDates);
+
+
+
 
             var getTempX5 = fiveDayResponse.list[i].main.temp;
             var tempPar = $("<p>");
-            tempPar.css("font-size", "25px");
+            tempPar.css("font-size", "18px");
             tempPar.css("color", "black");
-            tempPar.css("font-weight", "bolder");
             tempPar.append(getTempX5 + " F");
 
             var getHumidityX5 = fiveDayResponse.list[i].main.humidity;
@@ -132,6 +138,7 @@ function currentWeatherInfo(response) {
 
             var newDiv = $("<div>");
             newDiv.addClass("fiveDayBoxStyle");
+            newDiv.append(datePar);
             newDiv.append(tempPar);
             newDiv.append(humidityPar);
 
@@ -178,7 +185,7 @@ function appendBtns(savedBtns, localSavedBtns) {
 
 function savedBtnClicked(newBtn) {
     $(newBtn).click(function () {
-        var getSavedBtnVal = $(this).attr("data-name");
-        console.log(getSavedBtnVal);
+        // var getSavedBtnVal = $(this).attr("data-name");
+        // generateAllWeather(currentWeatherURL, localSavedBtns, savedBtns)
     })
 }

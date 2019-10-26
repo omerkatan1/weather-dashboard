@@ -34,11 +34,16 @@ header {
 #cityNameSearch {
     margin: 0px;
     height: 50px;
+    border-radius: 45px 0px 0px 45px;
+    border: none;
     float: left;
 }
 #cityNameSubmit {
     margin: 0px;
     height: 50px;
+    border-radius: 0px 45px 45px 0px;
+    background-color: rgb(66, 105, 212);
+    border: none;
 }
 .savedBtnStyle {
     width: 100%;
@@ -59,19 +64,27 @@ header {
     box-shadow: 0 0 5px #6d6d6d;
 }
 #fiveDayBox {
-    margin-top: 45px;
+    margin-top: 65px;
     padding: 0;
     width: 100%;
     height: auto;
     text-align: center;
 }
+#fiveDayForcastTitle {
+    padding-bottom: 10px;
+    border-bottom: 3px solid black;
+}
 
 .fiveDayBoxStyle {
-    height: 170px;
-    width: 115px;
-    background-color: lightskyblue;
+    height: 200px;
+    width: 140px;
+    background-color: rgb(207, 207, 207);
+    border-radius: 10px;
     float: left;
     margin: 10px;
+    -moz-box-shadow: 0 0 5px #6d6d6d;
+    -webkit-box-shadow: 0 0 5px #6d6d6d;
+    box-shadow: 0 0 5px #6d6d6d;
 }
 #humidity,
 #windspeed {
