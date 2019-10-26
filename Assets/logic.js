@@ -9,7 +9,12 @@ function generateAllWeather(currentWeatherURL) {
 
 
         if (savedBtns != null) {
-            savedBtns.push(response.name);
+            if(!savedBtns.includes(response.name)) {
+                savedBtns.push(response.name);
+            }
+            else {
+                console.log("savedBtns already includes that city");
+            }
             localStorage.setItem("savedCitys", JSON.stringify(savedBtns));
         } else {
             console.log("saved buttons is empty");
