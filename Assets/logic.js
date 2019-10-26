@@ -1,5 +1,5 @@
 
-function generateAllWeather(currentWeatherURL) {
+function generateAllWeather(currentWeatherURL, localSavedBtns, savedBtns) {
     $.ajax({
         url: currentWeatherURL,
         method: "GET"
@@ -8,8 +8,25 @@ function generateAllWeather(currentWeatherURL) {
 
 
         // this makes it so the user cant get the same saved button twice
-        var inLocalArray = localSavedBtns.includes(response.name);
-        var inArray = savedBtns.includes(response.name);
+        var inLocalArray;
+        var inArray;
+
+        // checks if arrays are empty then if true then automatically set falue to false so the code can run
+        if(localSavedBtns != null) {
+            inLocalArray = localSavedBtns.includes(response.name);
+        }
+        else  {
+            inLocalArray = false;
+        }
+
+        if(savedBtns != null) {
+            inArray = savedBtns.includes(response.name);
+        }
+        else {
+            inArray = false;
+        }
+
+        
 
         if(inLocalArray) {
             console.log("already in local array");
@@ -22,7 +39,6 @@ function generateAllWeather(currentWeatherURL) {
             savedBtns.push(response.name);
             } else {
                 console.log("saved buttons is empty");
-                
             }
         }
         localStorage.setItem("savedCitys", JSON.stringify(savedBtns));
