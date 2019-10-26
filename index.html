@@ -92,13 +92,11 @@
     $(".searchBtn").click(function () {
 
         var city = $("#cityNameSearch").val();
-        savedBtnClicked(city);
 
         currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + key;
 
 
         generateAllWeather(currentWeatherURL, savedBtns, localSavedBtns);
-        updateBtn();
     });
     appendBtns(savedBtns, localSavedBtns);
 

@@ -8,14 +8,15 @@ function generateAllWeather(currentWeatherURL) {
 
 
 
-
-
         if (savedBtns != null) {
             savedBtns.push(response.name);
             localStorage.setItem("savedCitys", JSON.stringify(savedBtns));
         } else {
             console.log("saved buttons is empty");
         }
+        
+        $("#newBtnSearch").empty();
+        appendBtns();
 
         // all the current weather info function
         currentWeatherInfo(response);
@@ -143,44 +144,51 @@ function currentWeatherInfo(response) {
 
 
 
-function appendBtns(savedBtns, localSavedBtns) {
-    if (localSavedBtns != null) {
+function appendBtns() {
+        if (localSavedBtns != null) {
 
-
-        for (var i = 0; i < localSavedBtns.length; i++) {
-            if(!savedBtns.includes(localSavedBtns[i])) {
-                savedBtns.push(localSavedBtns[i]);
+            for (var i = 0; i < localSavedBtns.length; i++) {
+                if (!savedBtns.includes(localSavedBtns[i])) {
+                    savedBtns.push(localSavedBtns[i]);
+                }
+                else {
+                    console.log("saved buttons array already contains that city");
+                }
             }
-            else {
-                console.log("saved buttons array already contains that city");
+
+
+            for (var i = 0; i < savedBtns.length; i++) {
+                var newBtn = $("<button>");
+                newBtn.attr("data-name", savedBtns[i]);
+                newBtn.append(savedBtns[i]);
+                newBtn.addClass("savedBtnStyle");
+                $("#newBtnSearch").prepend(newBtn);
+
+                savedBtnClicked(newBtn);
             }
         }
-
-
-        console.log(savedBtns);
-        for (var i = 0; i < savedBtns.length; i++) {
-            console.log(savedBtns);
-            var newBtn = $("<button>");
-            newBtn.attr("data-name", savedBtns[i]);
-            newBtn.append(savedBtns[i]);
-            newBtn.addClass("savedBtnStyle");
-            $("#newBtnSearch").prepend(newBtn);
-
-            savedBtnClicked(newBtn);
+        else {
+            console.log("savedBtns is empty");
         }
-
-        function updateButton(newBtn) {
-            $(".searchBtn").append(newBtn);
-        }
-    }
-    else {
-        console.log("savedBtns is empty");
-    }
 }
 
-function savedBtnClicked(newBtn, city) {
+function savedBtnClicked(newBtn) {
     $(newBtn).click(function () {
-        var getSavedBtnVal = $(this).attr("data-name");
-        city.val(getSavedBtnVal);
+
+        var keyBtn = "f2c5c8025ab4a4cc77dc112a270a04b9";
+        var cityBtn = $(this).attr("data-name");
+        var currentWeatherBtnURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityBtn + "&units=imperial&appid=" + keyBtn;
+
+        $.ajax({
+            url: currentWeatherBtnURL,
+            method: "GET"
+        }).then(function (response) {
+            console.log(response);
+
+            // all the current weather info function
+            currentWeatherInfo(response);
+
+        });
+
     })
 }
