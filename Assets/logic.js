@@ -1,6 +1,43 @@
 
+function generateAllWeather(currentWeatherURL) {
+    $.ajax({
+        url: currentWeatherURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
+
+
+        // this makes it so the user cant get the same saved button twice
+        var inLocalArray = localSavedBtns.includes(response.name);
+        var inArray = savedBtns.includes(response.name);
+
+        if(inLocalArray) {
+            console.log("already in local array");
+        }
+        else if(inArray) {
+            console.log("already in array");
+        }
+        else {
+            if(savedBtns != null) {
+            savedBtns.push(response.name);
+            } else {
+                console.log("saved buttons is empty");
+                
+            }
+        }
+        localStorage.setItem("savedCitys", JSON.stringify(savedBtns));
+
+        // all the current weather info function
+        currentWeatherInfo(response);
+
+    });
+}
+
+
 
 function currentWeatherInfo(response) {
+
+
     // city name stuff
     var getCity = response.name;
     $("#city").empty();
