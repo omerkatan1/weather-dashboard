@@ -7,8 +7,9 @@ function generateAllWeather(currentWeatherURL) {
         console.log(response);
 
 
-
+        // if saved buttons does not have no value...
         if (savedBtns != null) {
+            // checks if the buttons were already included in the local storage
             if(!savedBtns.includes(response.name)) {
                 savedBtns.push(response.name);
             }
@@ -84,6 +85,11 @@ function currentWeatherInfo(response) {
     });
 
 
+    
+
+
+
+    // five day forcast code
     var fiveDayQueryURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + key;
 
 
@@ -148,7 +154,7 @@ function currentWeatherInfo(response) {
 
 
 
-
+// stores previous buttons and adds new buttons
 function appendBtns() {
         if (localSavedBtns != null) {
 
@@ -177,6 +183,7 @@ function appendBtns() {
         }
 }
 
+// when a localStorage button is clicked...
 function savedBtnClicked(newBtn) {
     $(newBtn).click(function () {
 

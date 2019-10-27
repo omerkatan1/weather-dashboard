@@ -2,6 +2,8 @@
 <html>
 
 <head>
+        <meta charset="utf-8"/>
+
     <title>Weather Dashboard</title>
 
     <!-- linking css sheet -->
@@ -34,7 +36,7 @@
 
     <div id="searchBar">
         <input class="col-8" type="text" id="cityNameSearch">
-        <button class="col-4 searchBtn" id="cityNameSubmit">🔍</button>
+        <button class="col-4 searchBtn" id="cityNameSubmit">Search</button>
     </div>
 
     <!-- where local storage buttons will be appended -->
@@ -95,9 +97,10 @@
 
         currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + key;
 
-
+        //all javascript functions for current weather
         generateAllWeather(currentWeatherURL, savedBtns, localSavedBtns);
     });
+    // appends the buttons for the localStorage recalls
     appendBtns(savedBtns, localSavedBtns);
 
 </script>

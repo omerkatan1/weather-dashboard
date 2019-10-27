@@ -9,7 +9,7 @@ html, body, .container-fluid, .row {
 
 
 header {
-    background-color: rgb(110, 110, 236);
+    background-color: rgb(66, 105, 212);
     text-align: center;
     width: 100%;
     height: 100px;
@@ -38,16 +38,52 @@ header {
     border: none;
     float: left;
 }
+#cityNameSearch:focus {
+    outline: none;
+}
 #cityNameSubmit {
+    color: white;
     margin: 0px;
     height: 50px;
     border-radius: 0px 45px 45px 0px;
     background-color: rgb(66, 105, 212);
     border: none;
+    transition-duration: 0.1s;
+    -moz-transition-duration: 0.1s;
+}
+#cityNameSubmit:hover {
+    background-color: rgb(30, 82, 223);
+}
+#cityNameSubmit:focus {
+    outline: none;
+}
+#cityNameSubmit:active {
+    background-color: rgb(0, 68, 255);
 }
 .savedBtnStyle {
     width: 100%;
     height: 50px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: none;
+    background-color: whitesmoke;
+    -moz-box-shadow: 0 0 2px #6d6d6d;
+    -webkit-box-shadow: 0 0 2px #6d6d6d;
+    box-shadow: 0 0 2px #6d6d6d;
+    transition-duration: 0.1s;
+    -moz-transition-duration: 0.1s;
+}
+.savedBtnStyle:hover {
+    -moz-box-shadow: 0 0 5px #6d6d6d;
+    -webkit-box-shadow: 0 0 5px #6d6d6d;
+    box-shadow: 0 0 5px #6d6d6d;
+    border: 1px solid rgb(66, 105, 212);
+}
+.savedBtnStyle:focus {
+    outline: none;
+}
+.savedBtnStyle:active {
+    border: 2px solid rgb(66, 105, 212);
 }
 #weatherRow {
     text-align: center;
