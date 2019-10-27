@@ -62,7 +62,7 @@ function currentWeatherInfo(response) {
     $("#windspeed").append("Windspeed: " + getSpeed + " mph");
 
     // icon stuff
-    var getIconURL = "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png";
+    var getIconURL = "https://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png";
     $("#iconHolder").attr("src", getIconURL);
 
 
@@ -70,7 +70,7 @@ function currentWeatherInfo(response) {
     var lat = response.coord.lat;
     var lon = response.coord.lon;
 
-    var uvQueryURL = "http://api.openweathermap.org/data/2.5/uvi/forecast?appid=" + key + "&lat=" + lat + "&lon=" + lon;
+    var uvQueryURL = "https://api.openweathermap.org/data/2.5/uvi/forecast?appid=" + key + "&lat=" + lat + "&lon=" + lon;
 
 
     $.ajax({
@@ -90,7 +90,7 @@ function currentWeatherInfo(response) {
 
 
     // five day forcast code
-    var fiveDayQueryURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + key;
+    var fiveDayQueryURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + key;
 
 
     $.ajax({
