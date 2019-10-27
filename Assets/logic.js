@@ -26,7 +26,7 @@ function generateAllWeather(currentWeatherURL) {
 
         // all the current weather info function
         currentWeatherInfo(response);
-
+    
     });
 }
 
