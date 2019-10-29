@@ -124,7 +124,7 @@ function currentWeatherInfo(response) {
             tempPar.css("font-size", "18px");
             tempPar.css("color", "black");
             tempPar.css("text-align", "left");
-            tempPar.append(getTempX5 + " F");
+            tempPar.append(getTempX5 + " °F");
 
             var getHumidityX5 = fiveDayResponse.list[i].main.humidity;
             var humidityPar = $("<p>");
